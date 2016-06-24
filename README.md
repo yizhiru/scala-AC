@@ -1,13 +1,13 @@
-# scala--implementation-of-aho-corasick
+# scala-implementation-of-aho-corasick
 
-This is a simple implementation of Aho-Corasick algorithm written in purely scala. The best feature is that it support adding the property of word.
+This is a simple implementation of Aho-Corasick algorithm written in purely scala. The best feature is that it supports adding the property of word, and is byte-oriented.
 
 ## Usage
 
 ```scala
 // create AC automaton
 val ac = new Automaton
-ac.addWords("ss", "he", "she", "his", "hers")
+ac.addWords("user defined", "he", "she", "his", "hers") // "user defined" is the property of words
 ac.setFailTransitions()
 
 // search pattern string
