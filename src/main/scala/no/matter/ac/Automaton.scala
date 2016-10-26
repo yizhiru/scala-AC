@@ -26,7 +26,7 @@ class Automaton {
       gotoState(trie(state), t) match {
         case -1 => val next = trie.size
           trie(state).goto += (t -> next)
-          trie += Node(state, t, mutable.Map[Byte, Int](), 0, mutable.Set[(String, String)]())
+          trie += Node(next, t, mutable.Map[Byte, Int](), 0, mutable.Set[(String, String)]())
           state = next
         case _ => state = gotoState(trie(state), t)
       }
