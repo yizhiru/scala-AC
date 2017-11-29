@@ -7,7 +7,8 @@ This is a simple implementation of Aho-Corasick algorithm written in purely scal
 ```scala
 // create AC automaton
 val ac = new Automaton
-ac.addWords("user defined", "he", "she", "his", "hers") // "user defined" is the property of words
+// "user defined" is the property of words
+ac.addWords("user defined", "he", "she", "his", "hers")
 ac.setFailTransitions()
 
 // search pattern string
