@@ -6,8 +6,13 @@ import scala.collection.mutable.ArrayBuffer
 class Automaton {
 
     // initialization
-    val trie: ArrayBuffer[Node] = ArrayBuffer(Node(0, 0.asInstanceOf[Byte],
-        mutable.Map[Byte, Int](), 0, mutable.Set[(String, String)]()))
+    val trie: ArrayBuffer[Node] = ArrayBuffer(
+        Node(state = 0,
+            value = 0.asInstanceOf[Byte],
+            goto = mutable.Map[Byte, Int](),
+            failure = 0,
+            output = mutable.Set[(String, String)]())
+    )
 
     /**
       * Goto a state according to byte value.
