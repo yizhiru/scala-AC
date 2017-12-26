@@ -74,9 +74,10 @@ class Automaton {
                 var state = trie(r).failure
                 while (gotoState(trie(state), a) == -1 && state != 0)
                     state = trie(state).failure
-                val goto_a: Int = state == 0 && gotoState(trie(state), a) == -1 match {
-                    case true => 0
-                    case _ => trie(state).goto.getOrElse(a, 0)
+                val goto_a: Int = if (state == 0 && gotoState(trie(state), a) == -1) {
+                    0
+                } else {
+                    trie(state).goto.getOrElse(a, 0)
                 }
                 trie(s).failure = goto_a
                 trie(s).output ++= trie(trie(s).failure).output
