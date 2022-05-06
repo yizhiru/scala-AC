@@ -1,6 +1,6 @@
-# scala-implementation-of-aho-corasick
+# Scala implementation of Aho-Corasick algorithm
 
-This is a simple implementation of Aho-Corasick algorithm written in purely scala. The best feature is that it supports adding the property of word, and is byte-oriented.
+This is a simple implementation of Aho-Corasick algorithm written in purely scala, which is byte-oriented. The best feature is that it supports adding the property of word.
 
 ## Usage
 
