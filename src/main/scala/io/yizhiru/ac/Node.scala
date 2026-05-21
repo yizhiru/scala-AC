@@ -3,21 +3,27 @@ package io.yizhiru.ac
 import scala.collection.mutable
 
 /**
-  * trie node in AC automaton
+  * Trie node in an Aho-Corasick automaton.
   *
-  * @param state   the index of node in trie
-  * @param value   the part byte of string
-  * @param goto    goto function
-  * @param failure failure function
-  * @param output  output function set[(key word, word property)]
+  * @param failure failure link state index
+  * @param goto    transition table indexed by unsigned byte (0-255), -1 before build completes
+  * @param output  vocabulary indices for pattern ends reachable from this state
   */
-case class Node(state: Int,
-                value: Byte,
-                goto: mutable.Map[Byte, Int],
-                var failure: Int,
-                output: mutable.Set[(String, String)]) {
+private[ac] final class Node(
+    var failure: Int,
+    val goto: Array[Int],
+    val output: mutable.Set[Int]
+)
 
-    override def toString: String = {
-        state.toString + "," + value + "," + goto + "," + failure + "," + output
-    }
+private[ac] object Node {
+
+  private[ac] val AlphabetSize = 256
+  private[ac] val NoTransition = -1
+
+  private[ac] def create(): Node =
+    new Node(
+      failure = 0,
+      goto = Array.fill(AlphabetSize)(NoTransition),
+      output = mutable.Set.empty
+    )
 }
